@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>💌</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="card">
+        <h1>💌 mini postman 💌</h1>
+
+        <label for="url">URL:</label>
+        <input type="text" id="url" placeholder="https://jsonplaceholder.typicode.com/posts">
+
+        <label for="method">método HTTP:</label>
+        <select id="method" onchange="toggleBodyInput()">
+            <option value="GET">🧾 GET</option>
+            <option value="POST">✉️ POST</option>
+            <option value="PUT">🛠️ PUT</option>
+            <option value="DELETE">🗑️ DELETE</option>
+        </select>
+
+        <label id="bodyLabel" for="requestBody" style="display: none;">📦 corpo da requisição (JSON):</label>
+        <textarea id="requestBody" style="display: none;" placeholder='{"nome": "mark", "tutor(a)": "éshiley", "idade": "6"}'></textarea>
+
+        <button onclick="sendRequest()">🚀 enviar</button>
+        <div id="statusDisplay" class="status">💭 aguardando envio... 💭</div>
+
+        <div class="tabs">
+            <button onclick="showTab('body')" class="active">📦 body</button>
+            <button onclick="showTab('headers')">🧠 headers</button>
+        </div>
+
+        <pre id="bodyTab" class="response"></pre>
+        <pre id="headersTab" class="response" style="display: none;"></pre>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
