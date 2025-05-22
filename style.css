@@ -39,6 +39,21 @@ textarea {
     font-family: 'Poppins', sans-serif;
 }
 
+input[type="text"],
+select,
+textarea {
+    width: 95%;
+    max-width: 700px;
+    padding: 10px;
+    border: 2px solid #a3b899;
+    border-radius: 8px;
+    background-color: #dde6d5;
+    font-family: monospace;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
 textarea {
     height: 120px;
 }

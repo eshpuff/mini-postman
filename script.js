@@ -16,10 +16,12 @@ function toggleBodyInput() {
 }
 
 async function sendRequest() {
+  // coleta os dados do form
   const url = document.getElementById('url').value;
   const method = document.getElementById('method').value;
   const bodyMessage = document.getElementById('requestBody').value;
 
+  // cria objeto options para o fetch
   let options = {
     method,
     headers: {}
@@ -30,16 +32,16 @@ async function sendRequest() {
       options.body = JSON.stringify(JSON.parse(bodyMessage)); //verifica se eh um json válido
       options.headers["Content-Type"] = "application/json";
     } catch (e) {
-      document.getElementById('statusDisplay').textContent = 'o formato JSON está errado.';
+      document.getElementById('statusDisplay').textContent = 'é aceito apenas formato JSON.';
       return;
     }
   }
 
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(url, options); // faz a requisição
     const contentType = response.headers.get("content-type");
 
-    let body;
+    let body; //leitura do body
     if (contentType && contentType.includes("application/json")) {
       body = await response.json();
       body = JSON.stringify(body, null, 2);
@@ -47,7 +49,7 @@ async function sendRequest() {
       body = await response.text();
     }
 
-    //pega os headers
+    //pega os headers e transforma em texto
     const headers = [...response.headers.entries()]
       .map(([k, v]) => `${k}: ${v}`)
       .join('\n');
